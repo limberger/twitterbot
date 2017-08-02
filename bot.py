@@ -20,12 +20,14 @@
 
 import os
 import tweepy
+import random
 from secrets import *
+from textos  import *
 from time import gmtime, strftime
 
 
 # ====== Individual bot configuration ==========================
-bot_username = ''
+bot_username = 'jpDataScience'
 logfile_name = bot_username + ".log"
 
 # ==============================================================
@@ -34,8 +36,9 @@ logfile_name = bot_username + ".log"
 def create_tweet():
     """Create the text of the tweet you want to send."""
     # Replace this with your code!
-    text = ""
-    return text
+    text = getNoticia()
+    retorno = text[0] + " " + text[1]
+    return retorno
 
 
 def tweet(text):
@@ -63,5 +66,9 @@ def log(message):
 
 
 if __name__ == "__main__":
-    tweet_text = create_tweet()
-    tweet(tweet_text)
+    if random.randrange(1,12) == 1:
+        tweet_text = create_tweet()
+        print("Twitando: %s" % tweet_text)
+        tweet(tweet_text)
+    else:
+        print("No Twit!!!");
